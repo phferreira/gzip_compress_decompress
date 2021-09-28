@@ -1,0 +1,32 @@
+name: gzip_compress_decompress
+description: A new Flutter project.
+
+publish_to: 'none'
+
+version: 1.0.0+1
+
+environment:
+  sdk: ">=2.14.0 <3.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  cupertino_icons: ^1.0.2
+  flutter_modular: ^4.0.0
+  flutter_triple: ^1.2.4+3
+  file_picker: ^4.1.1
+  fpdart: ^0.0.11
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+  flutter_lints: ^1.0.0
+  triple_test: ^0.0.8
+  modular_test:
+
+flutter:
+  uses-material-design: true
+  assets:
+    - assets/lang/
