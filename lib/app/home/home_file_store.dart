@@ -24,8 +24,7 @@ class HomeFileStore extends NotifierStore<Exception, String> {
   }
 
   void updateFile(String locale, String stringFile) {
-    // List<int> compress = gzip.encode(stringFile.codeUnits);
-    File(locale).writeAsBytesSync(gzip.encode(stringFile.codeUnits));
+    File(locale).writeAsBytesSync(gzip.encode(utf8.encode(stringFile)));
   }
 
   void validateFile(String file) {
