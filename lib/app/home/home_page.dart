@@ -51,8 +51,9 @@ class _HomePageState extends State<HomePage> {
         title: Text(widget.title),
       ),
       body: Padding(
-        padding: const EdgeInsets.all(8.0),
+        padding: const EdgeInsets.all(24.0),
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
             TextField(
               controller: pathController,
@@ -64,9 +65,6 @@ class _HomePageState extends State<HomePage> {
                   icon: const Icon(Icons.search),
                 ),
               ),
-            ),
-            Container(
-              height: 40,
             ),
             ScopedBuilder<HomePathStore, Exception, String>(
               onState: (_, value) {
@@ -80,9 +78,6 @@ class _HomePageState extends State<HomePage> {
                 );
               },
             ),
-            Container(
-              height: 40,
-            ),
             TextField(
               controller: fileController,
               minLines: 10,
@@ -91,11 +86,6 @@ class _HomePageState extends State<HomePage> {
                 border: OutlineInputBorder(),
                 labelText: 'File',
               ),
-            ),
-            //   },
-            // ),
-            Container(
-              height: 40,
             ),
             ScopedBuilder<HomeFileStore, Exception, String>(
               onState: (_, value) {
