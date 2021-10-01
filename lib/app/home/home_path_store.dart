@@ -21,8 +21,6 @@ class HomePathStore extends NotifierStore<Exception, String> {
   }
 
   void validatePath(String displayValue) {
-    // print('teste');
     update(displayValue);
-    // return state;
   }
 }
