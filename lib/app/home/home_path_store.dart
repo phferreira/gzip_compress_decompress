@@ -1,26 +1,26 @@
 import 'dart:io';
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter_triple/flutter_triple.dart';
-import 'package:fpdart/fpdart.dart';
 
-class HomePathStore extends NotifierStore<Exception, String> {
-  HomePathStore() : super('');
+class HomePathStore extends NotifierStore<Exception, List<FileSystemEntity>> {
+  HomePathStore() : super([]);
 
-  Future<Either<File, String>> filePlicker() async {
-    FilePickerResult? result = await FilePicker.platform.pickFiles(allowedExtensions: ['gzip']);
+  Future<String> filePicker() async {
+    String? result = await FilePicker.platform.getDirectoryPath();
 
     if (result != null) {
-      String? path = result.files.single.path;
-      File file = File(path!);
-      update(path);
-      return Left(file);
-    } else {
-      update('');
-      return right('Error file not found!');
-    }
-  }
+      List<FileSystemEntity> listFiles = Directory(result).listSync(recursive: true);
 
-  void validatePath(String displayValue) {
-    update(displayValue);
+      // String? path = result.files.single.path;
+      // File file = File(path!);
+      // update(path);
+      // return Left(file);
+
+      update(listFiles);
+      return result;
+    } else {
+      update([]);
+      return 'Error file not found!';
+    }
   }
 }
